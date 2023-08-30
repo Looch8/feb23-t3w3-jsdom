@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+
+		<link rel="stylesheet" href="./style.css" />
+		<script src="./script.js"></script>
+		<script src="./themeControl.js"></script>
+	</head>
+	<body>
+		<h1>Welcome!</h1>
+		<p>Some subheading goes here</p>
+		<hr />
+		<br />
+
+		<h2>Favourite Media</h2>
+		<ul id="mediaList"></ul>
+
+		<button onclick="changeCSSTheme('dark')">Change Theme to dark</button>
+
+		<button onclick="changeCSSTheme('light')">Change Theme to light</button>
+
+		<button onclick="toggleLightDark()">Toggle Theme</button>
+
+		<script>
+			exampleHello();
+			createListOfMedia();
+			changeCSSTheme("dark");
+		</script>
+	</body>
+</html>
