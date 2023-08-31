@@ -82,8 +82,10 @@ function addItemToList(event) {
 	}
 }
 
-let realFormSubmitButton = document.getElementById("real-formsubmit");
-realFormSubmitButton.addEventListener("click", addItemToList);
+// let realFormSubmitButton = document.getElementById("real-formsubmit");
+// realFormSubmitButton.addEventListener("click", (event) => {
+// 	addItemToList(event, "real-nameinput");
+// });
 
 function inputHelperOnFocus(targetId) {
 	let helperElement = document.getElementById(targetId);
@@ -114,3 +116,8 @@ pseudoFormTextInput.addEventListener("focusout", () => {
 	inputHelperOnBlur("pseudo-texthint");
 });
 inputHelperOnBlur("pseudo-texthint");
+
+let pseudoFormButton = document.getElementById("pseudo-formsubmit");
+pseudoFormButton.addEventListener("click", (event) => {
+	addItemToList(event, "pseudo-nameinput");
+});
