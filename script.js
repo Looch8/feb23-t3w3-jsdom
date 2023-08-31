@@ -84,3 +84,33 @@ function addItemToList(event) {
 
 let realFormSubmitButton = document.getElementById("real-formsubmit");
 realFormSubmitButton.addEventListener("click", addItemToList);
+
+function inputHelperOnFocus(targetId) {
+	let helperElement = document.getElementById(targetId);
+	console.log("showing text hint now");
+	helperElement.style.display = "inherit";
+}
+
+function inputHelperOnBlur(targetId) {
+	let helperElement = document.getElementById(targetId);
+	console.log("hide text hint now");
+	helperElement.style.display = "none";
+}
+
+let realFormTextInput = document.getElementById("real-nameinput");
+realFormTextInput.addEventListener("focusin", () => {
+	inputHelperOnFocus("real-texthint");
+});
+realFormTextInput.addEventListener("focusout", () => {
+	inputHelperOnBlur("real-texthint");
+});
+inputHelperOnBlur("real-texthint");
+
+let pseudoFormTextInput = document.getElementById("pseudo-nameinput");
+pseudoFormTextInput.addEventListener("focusin", () => {
+	inputHelperOnFocus("pseudo-texthint");
+});
+pseudoFormTextInput.addEventListener("focusout", () => {
+	inputHelperOnBlur("pseudo-texthint");
+});
+inputHelperOnBlur("pseudo-texthint");
