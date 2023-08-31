@@ -48,10 +48,16 @@ function createListOfMedia() {
 function removeItemFromList(targetItem) {
 	let targetItemNode = document.getElementById(targetItem);
 	if (targetItemNode) {
-		// targetItemNode.parentNode.removeChild(targetItemNode);
+		//targetItemNode.parentNode.removeChild(targetItemNode);
 
 		// Modify the array
-		favouriteMedia = favouriteMedia.filter((item) => item !== targetItem);
+		favouriteMedia = favouriteMedia.filter((item) => {
+			if (!item || item == "" || item !== targetItem) {
+				return true;
+			} else {
+				return false;
+			}
+		});
 
 		// Regenerate the visuals
 		createListOfMedia();
@@ -60,14 +66,20 @@ function removeItemFromList(targetItem) {
 
 function addItemToList(event) {
 	event.preventDefault();
-	console.log("we tried to add an item to the list");
+	console.log("we tried to add an item to the list!");
 
 	let realInputField = document.getElementById("real-nameinput");
 	let newItemName = realInputField.value;
-	console.log("newItemName is: " + newItemName);
+	if (newItemName) {
+		console.log("newItemName is: " + newItemName);
+		// add item to list
+		favouriteMedia.push(newItemName);
 
-	favouriteMedia.push(newItemName);
-	createListOfMedia();
+		// generate a new list
+		createListOfMedia();
+	} else {
+		console.warn("Attempted to add an empty item to the list");
+	}
 }
 
 let realFormSubmitButton = document.getElementById("real-formsubmit");
