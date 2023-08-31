@@ -20,6 +20,8 @@ function exampleHello() {
 function createListOfMedia() {
 	let rootUlNode = document.querySelector("ul");
 
+	rootUlNode.innerHTML = "";
+
 	favouriteMedia.forEach((mediaItem) => {
 		// Create an element but do not display it yet
 		let newListItem = document.createElement("li");
@@ -46,6 +48,27 @@ function createListOfMedia() {
 function removeItemFromList(targetItem) {
 	let targetItemNode = document.getElementById(targetItem);
 	if (targetItemNode) {
-		targetItemNode.parentNode.removeChild(targetItemNode);
+		// targetItemNode.parentNode.removeChild(targetItemNode);
+
+		// Modify the array
+		favouriteMedia = favouriteMedia.filter((item) => item !== targetItem);
+
+		// Regenerate the visuals
+		createListOfMedia();
 	}
 }
+
+function addItemToList(event) {
+	event.preventDefault();
+	console.log("we tried to add an item to the list");
+
+	let realInputField = document.getElementById("real-nameinput");
+	let newItemName = realInputField.value;
+	console.log("newItemName is: " + newItemName);
+
+	favouriteMedia.push(newItemName);
+	createListOfMedia();
+}
+
+let realFormSubmitButton = document.getElementById("real-formsubmit");
+realFormSubmitButton.addEventListener("click", addItemToList);
